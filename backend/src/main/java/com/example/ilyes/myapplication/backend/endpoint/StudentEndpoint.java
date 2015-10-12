@@ -27,18 +27,19 @@ import java.util.Objects;
 public class StudentEndpoint {
 
     List<Student> data = FakeData.get();
+// TODO: 12/10/15 problem avec getStudent et getStudentByLevel
+// ne peuve pas etre crée toute les deux
 
-
-    /**
-     * get a student from databse
-     *
-     * @param id
-     * @return
-     */
-    @ApiMethod(name = "getStudent", httpMethod = ApiMethod.HttpMethod.GET)
-    public Student getStudent(@Named("id") int id) {
-        return data.get(id);
-    }
+//    /**
+//     * get a student from databse
+//     *
+//     * @param id
+//     * @return
+//     */
+//    @ApiMethod(name = "getStudent", httpMethod = ApiMethod.HttpMethod.GET)
+//    public Student getStudent(@Named("id") int id) {
+//        return data.get(id);
+//    }
 
 
     /**
@@ -53,15 +54,9 @@ public class StudentEndpoint {
         return s;
     }
 
-//    @ApiMethod(name = "getAllStudent", httpMethod = "GET")
-//    public List<Student> getAllStudent() {
-//
-//        return data;
-//    }
 
-
-    @ApiMethod(name = "getStudentByLevel", httpMethod = "GET")
-    public List<Student> getStudentByLevel(@Named("level")String level) {
+    @ApiMethod(name = "getByLevelStudents", httpMethod = "GET")
+    public List<Student> getByLevelStudents(@Named("level") String level) {
 
         List<Student> temp = new ArrayList<>();
 
@@ -73,6 +68,12 @@ public class StudentEndpoint {
         }
 
         return temp;
+    }
+
+    @ApiMethod(name = "getAllStudent", httpMethod = "GET")
+    public List<Student> getAllStudent() {
+
+        return data;
     }
 
 
